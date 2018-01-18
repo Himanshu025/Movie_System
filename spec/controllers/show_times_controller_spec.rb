@@ -23,7 +23,7 @@ RSpec.describe ShowTimesController, type: :controller do
       response.should have_http_status(:ok) 
     end
     it'should be a valid Index Action' do 
-      show_times = show_time.all
+      show_times = ShowTime.all
       get :index , format: 'json'
       response.should have_http_status(:ok)
     end
