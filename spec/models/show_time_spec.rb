@@ -13,17 +13,11 @@ RSpec.describe ShowTime, type: :model do
 		it 'should be invalid without a end_time' do
 			FactoryGirl.build(:show_time, end_time: nil).should_not be_valid
 		end
-		it 'should be valid start_time with length equals_to 7 ' do
-			FactoryGirl.build(:show_time, start_time: "10:30am").should be_valid
+		it 'should be a valid start_time format' do
+      FactoryGirl.build(:show_time, start_time: "03:55:10").should be_valid
 		end
-		it 'should be invalid start_time with length not_equals_to' do
-			FactoryGirl.build(:show_time, start_time: "100:453am").should_not be_valid
-		end
-		it 'should be valid end_time with length equals_to 7 ' do
-			FactoryGirl.build(:show_time, end_time: "12:30pm").should be_valid
-		end
-		it 'should be invalid end_time with length not_equals_to' do
-			FactoryGirl.build(:show_time, end_time: "12112:453am").should_not be_valid
+		it 'should be a valid end_time format' do
+      FactoryGirl.build(:show_time, end_time: "03:55:10").should be_valid
 		end
 	end
   
