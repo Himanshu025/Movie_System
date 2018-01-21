@@ -2,7 +2,13 @@ require 'rails_helper'
 RSpec.describe Ticket, type: :model do
 	context "Ticket Creation" do
 		it 'has a valid factory' do
-			ticket = FactoryGirl.create(:ticket).should be_valid
+			user = FactoryGirl.create(:user)
+      movie = FactoryGirl.create(:movie)
+      theatre = FactoryGirl.create(:theatre)
+      audi = FactoryGirl.create(:audi, movie_id:movie.id, theatre_id:theatre.id)
+      show_time = FactoryGirl.create(:show_time, audi_id:audi.id)
+      booking = FactoryGirl.create(:booking,user_id:user.id, show_time_id:show_time.id) 
+      ticket = FactoryGirl.create(:ticket, booking_id:booking.id).should be_valid
 		end
 	end
 
@@ -26,8 +32,13 @@ RSpec.describe Ticket, type: :model do
 
 	context "Ticket Associations" do
   	it 'should belongs to booking'do
-		  booking = FactoryGirl.create(:booking)
-		  ticket = FactoryGirl.create(:ticket ,booking_id:booking.id)
+  	  user = FactoryGirl.create(:user)
+      movie = FactoryGirl.create(:movie)
+      theatre = FactoryGirl.create(:theatre)
+      audi = FactoryGirl.create(:audi, movie_id:movie.id, theatre_id:theatre.id)
+      show_time = FactoryGirl.create(:show_time, audi_id:audi.id)
+      booking = FactoryGirl.create(:booking,user_id:user.id, show_time_id:show_time.id) 
+      ticket = FactoryGirl.create(:ticket, booking_id:booking.id)
 		  ticket.booking.id.should eq booking.id
 	  end 	
 	end

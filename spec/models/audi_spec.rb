@@ -2,7 +2,9 @@ require 'rails_helper'
 RSpec.describe Audi, type: :model do
 	context "Audi Creation" do
 		it 'has a valid factory' do
-			audi = FactoryGirl.create(:audi).should be_valid
+			movie = FactoryGirl.create(:movie)
+      theatre = FactoryGirl.create(:theatre)
+      audi = FactoryGirl.create(:audi, movie_id:movie.id, theatre_id:theatre.id).should be_valid
 		end
 	end
 
@@ -28,18 +30,16 @@ RSpec.describe Audi, type: :model do
 	end
 
 	context "Audi Associations" do
+    movie = FactoryGirl.create(:movie)
+    theatre = FactoryGirl.create(:theatre)
+    audi = FactoryGirl.create(:audi, movie_id:movie.id, theatre_id:theatre.id, movie_id:movie.id)
 		it 'should belongs to theatre'do
-		  theatre = FactoryGirl.create(:theatre)
-		  audi = FactoryGirl.create(:audi ,theatre_id:theatre.id)
 		  audi.theatre.id.should eq theatre.id
 	  end
 	  it 'should belongs to movie'do
-	    movie = FactoryGirl.create(:movie)
-	    audi = FactoryGirl.create(:audi ,movie_id:movie.id)
 	    audi.movie.id.should eq movie.id
     end
     it 'should have_many show_times'do
-      audi = FactoryGirl.create(:audi)
       show_time1 = FactoryGirl.create(:show_time, audi_id:audi.id)
       show_time2 = FactoryGirl.create(:show_time, audi_id:audi.id)
       audi.show_times.includes(show_time1, show_time2).should be_truthy

@@ -30,15 +30,15 @@ RSpec.describe Theatre, type: :model do
 		end
 	end
   
-  context "Theatre Associations" do
+  context "Theatre Associations" do 
+    theatre = FactoryGirl.create(:theatre)
+    movie = FactoryGirl.create(:movie)
     it 'should have_many audis'do
-      theatre = FactoryGirl.create(:theatre)
-      audi1 = FactoryGirl.create(:audi, theatre_id:theatre.id)
-      audi2 = FactoryGirl.create(:audi, theatre_id:theatre.id)
+      audi1 = FactoryGirl.create(:audi, movie_id:movie.id, theatre_id:theatre.id)
+      audi2 = FactoryGirl.create(:audi, movie_id:movie.id, theatre_id:theatre.id)
       theatre.audis.includes(audi1, audi2).should be_truthy
     end
     it 'should have_many movies'do
-      theatre = FactoryGirl.create(:theatre)
       movie1 = FactoryGirl.create(:movie)
       movie2 = FactoryGirl.create(:movie)
       audi1 = FactoryGirl.create(:audi, movie_id:movie1.id ,theatre_id:theatre.id)

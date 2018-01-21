@@ -42,8 +42,12 @@ RSpec.describe User, type: :model do
 	context "User Associations" do
   	it 'should_have many bookings'do
 		  user = FactoryGirl.create(:user)
-		  booking1 = FactoryGirl.create(:booking ,user_id:user.id)
-		  booking2 = FactoryGirl.create(:booking ,user_id:user.id)
+		  movie = FactoryGirl.create(:movie)
+      theatre = FactoryGirl.create(:theatre)
+      audi = FactoryGirl.create(:audi, movie_id:movie.id, theatre_id:theatre.id)
+      show_time = FactoryGirl.create(:show_time, audi_id:audi.id)
+		  booking1 = FactoryGirl.create(:booking ,user_id:user.id, show_time_id:show_time.id)
+		  booking2 = FactoryGirl.create(:booking ,user_id:user.id, show_time_id:show_time.id)
 		  user.bookings.includes(booking1,booking2).should be_truthy
 	  end 	
 	end
