@@ -42,8 +42,6 @@ RSpec.describe AudisController, type: :controller do
 
   context 'POST' do 
     it 'should be a valid Create Action' do
-      theatre = FactoryGirl.create(:theatre)
-      movie = FactoryGirl.create(:movie)
       post :create, format:'json', audi:{ category: Faker::Food.spice , capacity:Faker::Number.between(100, 500), movie_id:movie.id, theatre_id:theatre.id }
       response.should have_http_status(:ok)
     end

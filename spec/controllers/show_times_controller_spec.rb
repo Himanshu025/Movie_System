@@ -1,12 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe ShowTimesController, type: :controller do
-  
   movie = FactoryGirl.create(:movie)
   theatre = FactoryGirl.create(:theatre)
   audi = FactoryGirl.create(:audi, movie_id:movie.id, theatre_id:theatre.id)
   show_time = FactoryGirl.create(:show_time, audi_id:audi.id)
-
   context 'GET' do
     it 'should be a valid Show Action' do 
       get :show , id: show_time.id, format: 'json'
