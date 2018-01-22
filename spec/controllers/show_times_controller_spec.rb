@@ -1,13 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe ShowTimesController, type: :controller do
-  movie = FactoryGirl.create(:movie)
-  theatre = FactoryGirl.create(:theatre)
-  audi = FactoryGirl.create(:audi, movie_id:movie.id, theatre_id:theatre.id)
-  show_time = FactoryGirl.create(:show_time, audi_id:audi.id)
+
+  before :each do
+    movie = FactoryGirl.create(:movie)
+    theatre = FactoryGirl.create(:theatre)
+    @audi = FactoryGirl.create(:audi, movie_id:movie.id, theatre_id:theatre.id)
+    @show_time = FactoryGirl.create(:show_time, audi_id:@audi.id)
+  end
+
   context 'GET' do
     it 'should be a valid Show Action' do 
-      get :show , id: show_time.id, format: 'json'
+      get :show , id: @show_time.id, format: 'json'
       response.should have_http_status(:ok)
     end 
     it 'should not be a valid Show Action' do 
@@ -28,7 +32,7 @@ RSpec.describe ShowTimesController, type: :controller do
       response.should have_http_status(:ok)
     end
     it 'should be a valid Edit Action' do 
-      get :edit , id:show_time.id , format:'json'
+      get :edit , id:@show_time.id , format:'json'
       response.should have_http_status(:ok)
     end
     it 'should not be a valid Edit Action' do 
@@ -43,7 +47,7 @@ RSpec.describe ShowTimesController, type: :controller do
 
   context 'POST' do 
     it 'should be a valid Create Action' do
-      post :create, format:'json', show_time:{ start_time:Faker::Time.between(2.days.ago, Date.today, :all).strftime("%T") , end_time:Faker::Time.between(2.days.ago, Date.today, :all).strftime("%T"), audi_id:audi.id }
+      post :create, format:'json', show_time:{ start_time:Faker::Time.between(2.days.ago, Date.today, :all).strftime("%T") , end_time:Faker::Time.between(2.days.ago, Date.today, :all).strftime("%T"), audi_id:@audi.id }
       response.should have_http_status(:ok)
     end
     it 'should not be a valid Create Action' do 
@@ -54,11 +58,11 @@ RSpec.describe ShowTimesController, type: :controller do
 
   context 'PUT' do 
     it 'should be a valid Update Action' do 
-      put :update, format:'json', id:show_time.id, show_time:{ start_time:show_time.start_time , end_time:show_time.end_time, audi_id:show_time.audi_id }
+      put :update, format:'json', id:@show_time.id, show_time:{ start_time:@show_time.start_time , end_time:@show_time.end_time, audi_id:@show_time.audi_id }
       response.should have_http_status(:ok)
     end
     it 'should not be a valid Update Action' do 
-      put :update, format:'json', id:show_time.id, show_time:{ start_time:'' , end_time:'', audi_id:'' }
+      put :update, format:'json', id:@show_time.id, show_time:{ start_time:'' , end_time:'', audi_id:'' }
       response.should have_http_status(:unprocessable_entity)
     end
     it 'should not be a valid Update Action' do 
@@ -69,7 +73,7 @@ RSpec.describe ShowTimesController, type: :controller do
 
   context 'DELETE' do 
     it 'should be a valid Destroy Action' do 
-      delete :destroy, format:'json', id:show_time.id 
+      delete :destroy, format:'json', id:@show_time.id 
       response.should have_http_status(:ok)
     end  
     it 'should not be a valid Destroy Action' do 

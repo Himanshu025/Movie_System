@@ -1,10 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe TheatresController, type: :controller do
-  theatre = FactoryGirl.create(:theatre)
+
+  before :each do
+    @theatre = FactoryGirl.create(:theatre)
+  end
+
   context 'GET' do
     it 'should be a valid Show Action' do 
-      get :show , id: theatre.id, format: 'json'
+      get :show , id: @theatre.id, format: 'json'
       response.should have_http_status(:ok)
     end 
     it 'should not be a valid Show Action' do 
@@ -25,7 +29,7 @@ RSpec.describe TheatresController, type: :controller do
       response.should have_http_status(:ok)
     end
     it 'should be a valid Edit Action' do 
-      get :edit , id:theatre.id , format:'json'
+      get :edit , id:@theatre.id , format:'json'
       response.should have_http_status(:ok)
     end
     it 'should not be a valid Edit Action' do 
@@ -51,11 +55,11 @@ RSpec.describe TheatresController, type: :controller do
 
   context 'PUT' do 
     it 'should be a valid Update Action' do 
-      put :update, format:'json', id:theatre.id, theatre:{ name:theatre.name , category:theatre.category, location:theatre.location }
+      put :update, format:'json', id:@theatre.id, theatre:{ name:@theatre.name , category:@theatre.category, location:@theatre.location }
       response.should have_http_status(:ok)
     end
     it 'should not be a valid Update Action' do 
-      put :update, format:'json', id:theatre.id, theatre:{ name:'' , category:'', location:'' }
+      put :update, format:'json', id:@theatre.id, theatre:{ name:'' , category:'', location:'' }
       response.should have_http_status(:unprocessable_entity)
     end
     it 'should not be a valid Update Action' do 
@@ -66,7 +70,7 @@ RSpec.describe TheatresController, type: :controller do
 
   context 'DELETE' do 
     it 'should be a valid Destroy Action' do 
-      delete :destroy, format:'json', id:theatre.id 
+      delete :destroy, format:'json', id:@theatre.id 
       response.should have_http_status(:ok)
     end  
     it 'should not be a valid Destroy Action' do 

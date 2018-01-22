@@ -180,8 +180,8 @@
         null,
         1,
         1,
-        25,
-        23,
+        85,
+        83,
         1,
         1,
         null,
@@ -204,10 +204,10 @@
         null,
         1,
         1,
-        29,
-        23,
-        29,
-        29,
+        104,
+        98,
+        104,
+        104,
         null,
         null
       ],
@@ -216,8 +216,8 @@
         null,
         1,
         1,
-        15,
-        15,
+        60,
+        60,
         1,
         null,
         null
@@ -227,9 +227,9 @@
         null,
         1,
         1,
-        24,
-        26,
-        24,
+        99,
+        101,
+        99,
         null,
         null
       ],
@@ -238,7 +238,7 @@
         null,
         1,
         1,
-        6,
+        21,
         1,
         null,
         null
@@ -248,10 +248,10 @@
         null,
         1,
         1,
-        18,
-        20,
-        18,
-        18,
+        63,
+        65,
+        63,
+        63,
         null,
         null
       ],
@@ -378,44 +378,20 @@
         1,
         null
       ],
-      "/Users/himanshuchangwal/movie_system/app/models/movie.rb": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        null
-      ],
-      "/Users/himanshuchangwal/movie_system/app/models/theatre.rb": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        null
-      ],
-      "/Users/himanshuchangwal/movie_system/app/models/audi.rb": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        null
-      ],
       "/Users/himanshuchangwal/movie_system/spec/controllers/bookings_controller_spec.rb": [
         1,
         null,
         1,
+        null,
         1,
-        1,
-        1,
-        1,
-        1,
-        1,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        null,
+        null,
         1,
         1,
         1,
@@ -595,37 +571,15 @@
         null,
         null
       ],
-      "/Users/himanshuchangwal/movie_system/app/models/user.rb": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        null
-      ],
-      "/Users/himanshuchangwal/movie_system/app/models/show_time.rb": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        null
-      ],
-      "/Users/himanshuchangwal/movie_system/app/models/booking.rb": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        null
-      ],
       "/Users/himanshuchangwal/movie_system/spec/controllers/movies_controller_spec.rb": [
         1,
         null,
         1,
+        null,
         1,
+        16,
+        null,
+        null,
         1,
         1,
         1,
@@ -809,10 +763,14 @@
         1,
         null,
         1,
+        null,
         1,
-        1,
-        1,
-        1,
+        16,
+        16,
+        16,
+        16,
+        null,
+        null,
         1,
         1,
         1,
@@ -996,7 +954,11 @@
         1,
         null,
         1,
+        null,
         1,
+        16,
+        null,
+        null,
         1,
         1,
         1,
@@ -1180,13 +1142,17 @@
         1,
         null,
         1,
+        null,
         1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        null,
+        null,
         1,
         1,
         1,
@@ -1366,17 +1332,14 @@
         null,
         null
       ],
-      "/Users/himanshuchangwal/movie_system/app/models/ticket.rb": [
-        1,
-        1,
-        1,
-        null
-      ],
       "/Users/himanshuchangwal/movie_system/spec/controllers/users_controller_spec.rb": [
         1,
         null,
         1,
+        null,
         1,
+        16,
+        null,
         1,
         1,
         1,
@@ -1606,6 +1569,34 @@
         null,
         null
       ],
+      "/Users/himanshuchangwal/movie_system/app/models/audi.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/himanshuchangwal/movie_system/app/models/movie.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/himanshuchangwal/movie_system/app/models/theatre.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
       "/Users/himanshuchangwal/movie_system/spec/models/booking_spec.rb": [
         1,
         1,
@@ -1648,6 +1639,32 @@
         1,
         null,
         null,
+        null
+      ],
+      "/Users/himanshuchangwal/movie_system/app/models/booking.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/himanshuchangwal/movie_system/app/models/user.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/himanshuchangwal/movie_system/app/models/show_time.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
         null
       ],
       "/Users/himanshuchangwal/movie_system/spec/models/movie_spec.rb": [
@@ -1846,6 +1863,12 @@
         null,
         null
       ],
+      "/Users/himanshuchangwal/movie_system/app/models/ticket.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
       "/Users/himanshuchangwal/movie_system/spec/models/user_spec.rb": [
         1,
         1,
@@ -1903,6 +1926,6 @@
         null
       ]
     },
-    "timestamp": 1516596038
+    "timestamp": 1516597789
   }
 }

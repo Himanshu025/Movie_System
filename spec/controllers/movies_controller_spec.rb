@@ -1,10 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe MoviesController, type: :controller do 
-  movie = FactoryGirl.create(:movie)
+  
+  before :each do
+    @movie = FactoryGirl.create(:movie)
+  end
+
   context 'GET' do
     it 'should be a valid Show Action' do 
-      get :show , id: movie.id, format: 'json'
+      get :show , id: @movie.id, format: 'json'
       response.should have_http_status(:ok)
     end 
     it 'should not be a valid Show Action' do
@@ -25,7 +29,7 @@ RSpec.describe MoviesController, type: :controller do
       response.should have_http_status(:ok)
     end
     it 'should be a valid Edit Action' do
-      get :edit , id:movie.id , format:'json'
+      get :edit , id:@movie.id , format:'json'
       response.should have_http_status(:ok)
     end
     it 'should not be a valid Edit Action' do 
@@ -51,11 +55,11 @@ RSpec.describe MoviesController, type: :controller do
 
   context 'PUT' do 
     it 'should be a valid Update Action' do 
-      put :update, format:'json', id:movie.id, movie:{ title:movie.title , year:movie.year, duration:movie.duration, cast:movie.cast }
+      put :update, format:'json', id:@movie.id, movie:{ title:@movie.title , year:@movie.year, duration:@movie.duration, cast:@movie.cast }
       response.should have_http_status(:ok)
     end
     it 'should not be a valid Update Action' do
-      put :update, format:'json', id:movie.id, movie:{ title:'' , year:'', duration:'', cast:'' }
+      put :update, format:'json', id:@movie.id, movie:{ title:'' , year:'', duration:'', cast:'' }
       response.should have_http_status(:unprocessable_entity)
     end
     it 'should not be a valid Update Action' do
@@ -66,7 +70,7 @@ RSpec.describe MoviesController, type: :controller do
 
   context 'DELETE' do 
     it 'should be a valid Destroy Action' do 
-      delete :destroy, format:'json', id:movie.id 
+      delete :destroy, format:'json', id:@movie.id 
       response.should have_http_status(:ok)
     end  
     it 'should not be a valid Destroy Action' do

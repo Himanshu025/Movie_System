@@ -1,10 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  user = FactoryGirl.create(:user)
+
+  before :each do
+    @user = FactoryGirl.create(:user)
+  end
+  
   context 'GET' do
     it 'should be a valid Show Action' do 
-      get :show , id: user.id, format: 'json'
+      get :show , id: @user.id, format: 'json'
       response.should have_http_status(:ok)
     end 
     it 'should not be a valid Show Action' do 
@@ -25,7 +29,7 @@ RSpec.describe UsersController, type: :controller do
       response.should have_http_status(:ok)
     end
     it 'should be a valid Edit Action' do 
-      get :edit , id:user.id , format:'json'
+      get :edit , id:@user.id , format:'json'
       response.should have_http_status(:ok)
     end
     it 'should not be a valid Edit Action' do 
@@ -51,11 +55,11 @@ RSpec.describe UsersController, type: :controller do
 
   context 'PUT' do 
     it 'should be a valid Update Action' do 
-      put :update, format:'json', id:user.id, user:{ name:user.name , location:user.location, phone:user.phone, email:user.email }
+      put :update, format:'json', id:@user.id, user:{ name:@user.name , location:@user.location, phone:@user.phone, email:@user.email }
       response.should have_http_status(:ok)
     end
     it 'should not be a valid Update Action' do 
-      put :update, format:'json', id:user.id, user:{ name:'' , location:'', phone:'', email:'' }
+      put :update, format:'json', id:@user.id, user:{ name:'' , location:'', phone:'', email:'' }
       response.should have_http_status(:unprocessable_entity)
     end
     it 'should not be a valid Update Action' do 
@@ -66,7 +70,7 @@ RSpec.describe UsersController, type: :controller do
 
   context 'DELETE' do 
     it 'should be a valid Destroy Action' do 
-      delete :destroy, format:'json', id:user.id 
+      delete :destroy, format:'json', id:@user.id 
       response.should have_http_status(:ok)
     end  
     it 'should not be a valid Destroy Action' do 
